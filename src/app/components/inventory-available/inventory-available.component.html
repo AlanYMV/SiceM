@@ -1,0 +1,105 @@
+<h1 align="center">Inventario disponible</h1>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Todo inventario</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Inventario por parametros</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <hr>
+        <div class="row">
+            <div class="col">
+                Fecha:
+            </div>
+            <div class="col">
+                <input class="form-control" type="date" placeholder="Fecha fin" required pattern="\d{4}-\d{2}-\d{2}" #fecha>
+            </div>
+            <div class="col">
+                <a (click)="searchInventory(fecha.value)" class="btn btn-primary" >Buscar</a>
+                
+                <a (click)="download(fecha.value)" class="btn btn-primary ms-2" >Descargar</a>
+            </div>
+        </div>
+        <hr>    
+        <p></p>   
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">On Hand</th>
+                    <th scope="col">In Transit</th>
+                    <th scope="col">Allocated</th>
+                    <th scope="col">Suspense</th>
+                    <th scope="col">Requested</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Real disponible</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let inven of inventory">
+                    <td>{{inven.item}}</td>
+                    <td>{{inven.on_hand}}</td>
+                    <td>{{inven.in_transit}}</td>
+                    <td>{{inven.allocated}}</td>
+                    <td>{{inven.suspense}}</td>
+                    <td>{{inven.requested}}</td>
+                    <td>{{inven.quantity}}</td>
+                    <td>{{inven.real_available}}</td>
+                    <td>{{inven.date_time}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <hr>
+        <div class="row">
+            <div class="col">
+                <details>
+                    <summary>Tipo localizacion</summary>
+                    <form>
+                        <fieldset>
+                            <ul class="no-bullets">
+                                <li *ngFor="let item of tipeL">
+                                    <label [for]="item.value">{{ item.value }}
+                                        <input type="checkbox" [id]="item.value" [name]="item.value" [value]="item.value" [(ngModel)]="item.selected">
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
+                </details>
+            </div>            
+            <div class="col">
+                <details>
+                    <summary>Zona localizacion</summary>
+                    <form>
+                        <fieldset>
+                            <ul class="no-bullets">
+                                <li *ngFor="let item of tipeZ">
+                                    <label [for]="item.value">{{ item.value }}
+                                        <input type="checkbox" [id]="item.value" [name]="item.value" [value]="item.value" [(ngModel)]="item.selected">
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
+                </details>
+            </div>
+            <div class="col">
+                <button (click)="submitSelectedValues()" class="btn btn-primary">Descargar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .no-bullets {
+        list-style-type: none;
+        padding-left: 0;
+    }
+</style>

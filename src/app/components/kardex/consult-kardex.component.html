@@ -1,0 +1,82 @@
+<h1>Kardex</h1>
+<hr>
+<div>
+    <p></p>
+    <div class="row">
+        <div class="col">
+            <input class="form-control" type="text" size="20" placeholder="Item" #item><br>
+            <input class="form-control" type="text" size="40" placeholder="Contenedor" #contenedor><br>
+            
+        </div>
+        <div class="col">
+            <input class="form-control" type="text" size="20" placeholder="Ubicacion" #ubicacion><br>
+            <input class="form-control" type="text" size="20" placeholder="Usuario" #usuario><br>
+        </div>
+        <div class="col">
+            <input class="form-control" type="text" size="20" placeholder="Tipo de trabajo" #tipoDeTrabajo><br>
+            <select class="form-select" formControlName="transaccion" *ngIf="transactions && transactions.length > 0" #transactionSelect (change)="onTransactionChange($event)">
+                <option *ngFor="let transac of transactions" value="{{transac.identifier}}">
+                    <!-- {{transac.identifier}}  {{transac.description}} -->
+                    {{transac.description}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            Fecha Inicio:
+        </div>
+        <div class="col">
+            <input class="form-control" type="date" placeholder="Fecha fin" required pattern="\d{4}-\d{2}-\d{2}" #fechaInicio>
+        </div>
+        <div class="col">
+            Fecha Fin:
+        </div>
+        <div class="col">
+            <input class="form-control" type="date" placeholder="Fecha fin" required pattern="\d{4}-\d{2}-\d{2}" #fechaFin>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="buscarKardex(item.value, contenedor.value, ubicacion.value, usuario.value, tipoDeTrabajo.value, fechaInicio.value, fechaFin.value)">Buscar</button>
+            <button class="btn btn-primary ms-2" (click)="onDownloadClick(item.value, contenedor.value, ubicacion.value, usuario.value, tipoDeTrabajo.value, fechaInicio.value, fechaFin.value)">Descargar Kardex</button>
+        </div>
+    </div>
+</div>
+<p></p>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Location</th>
+            <th scope="col">Date Stamp</th>
+            <th scope="col">User Tamp</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Before on Hand qty</th>
+            <th scope="col">After on Hand qty</th>
+            <th scope="col">Before in Transit qty</th>
+            <th scope="col">After in Transit qty</th>
+            <th scope="col">Before Alloc qty</th>
+            <th scope="col">After Alloc qty</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let karde of kardexs">
+            <td>{{karde.item}}</td>
+            <td>{{karde.location}}</td>
+            <td>{{karde.date_stamp}}</td>
+            <td>{{karde.user_tamp}}</td>
+            <td>{{karde.quantity}}</td>
+            <td>{{karde.before_on_hand_qty}}</td>
+            <td>{{karde.after_on_hand_qty}}</td>
+            <td>{{karde.before_in_transit_qty}}</td>
+            <td>{{karde.after_in_transit_qty}}</td>
+            <td>{{karde.before_alloc_qty}}</td>
+            <td>{{karde.after_alloc_qty}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="col-md-12">
+    <div class="alert alert-info" role="alert" align="Center">
+        Aqui solo se visualizan maximo 100 registros
+    </div>
+</div>
