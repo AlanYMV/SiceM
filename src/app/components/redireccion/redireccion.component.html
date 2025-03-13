@@ -1,0 +1,17 @@
+<main class="main">
+    <div class="content">
+      <div class="left-side">
+        <h1>Redirección</h1>
+      </div>
+      <div class="divider" role="separator" aria-label="Divider"></div>
+      <div class="right-side">
+        <div class="form-group">
+          <input type="text" [(ngModel)]="userInput" placeholder="N° Pedido" />
+          <select id="options" [(ngModel)]="selectedOption">
+            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+          </select>
+          <button (click)="sendData()">Cambiar</button>
+        </div>
+      </div>
+    </div>
+  </main>

@@ -23,7 +23,7 @@ export class InventoryAvailable implements OnInit {
     });}
 
   ngOnInit(): void {
-    this.loadItems();
+    // this.loadItems();
   }
   dateToday(): string {
     var today = new Date();
@@ -75,6 +75,19 @@ export class InventoryAvailable implements OnInit {
       alert("Ingrese la fecha que desea descargar")
     }
   }
+
+  downloadCategory(fecha:string){
+    console.log(fecha)
+    if (fecha){
+      const url: string = "http://192.168.84.108:8080/servicios/descargar_inventario_categoria/"+fecha;
+      console.info(url);
+      window.location.href = url;
+    }
+    else{
+      alert("Ingrese la fecha que desea descargar")
+    }
+  }
+
   submitSelectedValues(): void {
     const selectedTipeL = this.tipeL.filter(item => item.selected).map(item => item.value.replace(/ /g, '_')).join(',');
     const selectedTipeZ = this.tipeZ.filter(item => item.selected).map(item => item.value.replace(/ /g, '_')).join(',');

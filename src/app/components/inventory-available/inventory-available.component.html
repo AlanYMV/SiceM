@@ -1,6 +1,6 @@
 <h1 align="center">Inventario disponible</h1>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Todo inventario</button>
     </li>
@@ -9,7 +9,7 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> -->
         <hr>
         <div class="row">
             <div class="col">
@@ -22,6 +22,8 @@
                 <a (click)="searchInventory(fecha.value)" class="btn btn-primary" >Buscar</a>
                 
                 <a (click)="download(fecha.value)" class="btn btn-primary ms-2" >Descargar</a>
+                
+                <a (click)="downloadCategory(fecha.value)" class="btn btn-primary ms-2" >Descargar con Categorias</a>
             </div>
         </div>
         <hr>    
@@ -54,7 +56,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    <!-- </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <hr>
         <div class="row">
@@ -102,4 +104,4 @@
         list-style-type: none;
         padding-left: 0;
     }
-</style>
+</style> -->
