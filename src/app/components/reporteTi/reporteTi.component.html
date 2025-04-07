@@ -1,0 +1,35 @@
+<h1 style="text-align: center; font-family: Arial, sans-serif;">Reporte TI</h1>
+<table id="tabla" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+    <thead>
+        <tr>
+            <th >Estatus</th>
+            <th >Nombre</th>
+            <th >Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of bugsRelevant; let i = index">
+            <td>
+                <select [(ngModel)]="row.status" style="width: 100%; padding: 5px; font-size: 14px;">
+                    <option value="Abierta">Abierta</option>
+                    <option value="Cerrada">Cerrada</option>
+                    <option value="Detenida">Detenida</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="row.description" style="width: 100%; padding: 5px; font-size: 14px; box-sizing: border-box;">
+            </td>
+            <td >
+                <input type="text" [(ngModel)]="row.comments" style="width: 100%; padding: 5px; font-size: 14px; box-sizing: border-box;">
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div style="margin-top: 20px; text-align: center;">
+    <button (click)="agregarFila()" class="btn btn-primary ms-2">
+        Agregar bug
+    </button>
+    <button (click)="guardar()" class="btn btn-primary ms-2">
+        Guardar
+    </button>
+</div>

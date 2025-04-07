@@ -52,7 +52,10 @@ import { PricePromotion } from './components/prices-promotions/prices-promotions
 import { ShorpackDay } from './components/shorpack/shorpack.component';
 import { InventoryAvailable } from './components/inventory-available/inventory_available.component';
 import { SkuPriority } from './components/sku-priority/sku-priority.component';
-import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { FormsModule } from '@angular/forms'; 
+import { Redireccion } from './components/redireccion/redireccion.component';
+import { ReporteTi } from './components/reporteTi/reporteTi.component';
+import { InventoryAvailableFurniture } from './components/inventario-disponible-muebles/inventario-disponible-muebles.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +100,10 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
     PricePromotion,
     ShorpackDay,
     InventoryAvailable,
-    SkuPriority
+    SkuPriority,
+    Redireccion,
+    ReporteTi,
+    InventoryAvailableFurniture
   ],
   imports: [
     BrowserModule,

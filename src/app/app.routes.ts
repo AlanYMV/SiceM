@@ -39,6 +39,9 @@ import { PricePromotion } from './components/prices-promotions/prices-promotions
 import { ShorpackDay } from './components/shorpack/shorpack.component';
 import { InventoryAvailable } from './components/inventory-available/inventory_available.component';
 import { SkuPriority } from './components/sku-priority/sku-priority.component';
+import { Redireccion } from './components/redireccion/redireccion.component';
+import { ReporteTi } from './components/reporteTi/reporteTi.component';
+import { InventoryAvailableFurniture } from './components/inventario-disponible-muebles/inventario-disponible-muebles.component';
 
 const APP_ROUTES : Routes = [
     { path:'home', component: HomeComponent},
@@ -81,6 +84,9 @@ const APP_ROUTES : Routes = [
     { path:'shorpack', component: ShorpackDay},
     { path:'inventory-available', component: InventoryAvailable},
     { path:'sku-priority', component: SkuPriority},
+    { path:'redireccion', component: Redireccion},
+    { path:'reporte-ti', component: ReporteTi},
+    { path:'inventario-disponible-muebles', component: InventoryAvailableFurniture},
     { path:'**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

@@ -1,17 +1,41 @@
-<main class="main">
-    <div class="content">
-      <div class="left-side">
-        <h1>Redirección</h1>
-      </div>
-      <div class="divider" role="separator" aria-label="Divider"></div>
-      <div class="right-side">
-        <div class="form-group">
-          <input type="text" [(ngModel)]="userInput" placeholder="N° Pedido" />
-          <select id="options" [(ngModel)]="selectedOption">
-            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
-          </select>
-          <button (click)="sendData()">Cambiar</button>
-        </div>
-      </div>
+<h1>Redirección</h1>
+<hr>
+<div>
+  <p></p>
+  <div class="row">
+    <div class="col d-flex align-items-center">
+      <span>Pedido:</span>
+      <input 
+        class="form-control" 
+        type="text" 
+        size="20" 
+        placeholder="" 
+        #userInput 
+        (input)="fetchData(userInput.value)"><br>
     </div>
-  </main>
+    <div class="col d-flex align-items-center">
+      <span>Tienda Redirección:</span>
+      <select class="form-select" *ngIf="options && options.length > 0" #selectedOption (change)="onTransactionChange($event)">
+        <option *ngFor="let transac of options" value="{{transac.value}}">
+            {{transac.value}}
+        </option>
+      </select><br>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="sendData(userInput.value)">Cambiar</button>
+    </div>
+  </div>
+  <div class="row text-center mt-4">
+    <div class="col">
+      <h5>Contenedores</h5>
+      <p>{{contenedores}}</p>
+    </div>
+    <div class="col">
+      <h5>Piezas</h5>
+      <p>{{piezas}}</p>
+    </div>
+    <div class="col">
+      <h5>Tienda Origen</h5>
+      <p>{{tienda}}</p>
+  </div>
+</div>

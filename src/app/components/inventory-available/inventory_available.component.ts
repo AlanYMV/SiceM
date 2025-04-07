@@ -38,13 +38,13 @@ export class InventoryAvailable implements OnInit {
   }
 
   loadItems(): void {
-    this.http.get<any[]>('http://127.0.0.1:8000/servicios/tipo_localizacion/').subscribe(data => {
+    this.http.get<any[]>('http://192.168.84.108:8080/servicios/tipo_localizacion/').subscribe(data => {
       this.tipeL = data.map(item => ({
         value: item.value,
         selected: false
       }));
     });
-    this.http.get<any[]>('http://127.0.0.1:8000/servicios/zona_localizacion/').subscribe(data => {
+    this.http.get<any[]>('http://192.168.84.108:8080/servicios/zona_localizacion/').subscribe(data => {
       this.tipeZ = data.map(item => ({
         value: item.value,
         selected: false
@@ -87,13 +87,19 @@ export class InventoryAvailable implements OnInit {
       alert("Ingrese la fecha que desea descargar")
     }
   }
+  downloadFurniture(){
+    const url: string = "http://192.168.84.108:8080/servicios/descargar_inventario_disponible_muebles/";
+    console.info(url);
+    window.location.href = url;
+    
+  }
 
   submitSelectedValues(): void {
     const selectedTipeL = this.tipeL.filter(item => item.selected).map(item => item.value.replace(/ /g, '_')).join(',');
     const selectedTipeZ = this.tipeZ.filter(item => item.selected).map(item => item.value.replace(/ /g, '_')).join(',');
 
     const url = `${selectedTipeL}/${selectedTipeZ}`;
-    const  p = 'http://127.0.0.1:8000/servicios/inventario_disponible_parametros/'+ url;
+    const  p = 'http://192.168.84.108:8080/servicios/inventario_disponible_parametros/'+ url;
     console.info(p);
       window.location.href = p;
   }
